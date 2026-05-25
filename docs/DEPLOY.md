@@ -48,7 +48,7 @@ git push -u origin main
 | `GEMINI_API_KEY` | Your Gemini key |
 | `GEMINI_MODEL` | `gemini-2.5-flash` |
 | `MOCK_AI` | `false` |
-| `WEB_URL` | `https://vedaai-web.onrender.com` (update after web is live) |
+| `WEB_URL` | `https://veda-ai-web-nu.vercel.app` (exact Vercel URL; comma-separate `http://localhost:3000` for local dev) |
 
 **vedaai-worker** — same as API (no `PORT` needed).
 
@@ -128,7 +128,7 @@ See `.env.production.example` and `apps/api/.env.example`.
 
 | Variable | Required | Notes |
 |----------|----------|--------|
-| `WEB_URL` | Yes (API) | Exact origin of the web app (CORS + Socket.IO) |
+| `WEB_URL` | Yes (API) | Browser origin(s) for CORS + Socket.IO; comma-separated for multiple (e.g. Vercel + localhost) |
 | `NEXT_PUBLIC_API_URL` | Yes (web build) | Public API URL, no trailing slash |
 | `MONGODB_URI` | Yes | Atlas or `mongodb://mongo:27017/vedaai` in Compose |
 | `REDIS_URL` | Yes | Must support pub/sub (Upstash works) |

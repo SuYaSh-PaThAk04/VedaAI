@@ -1,7 +1,7 @@
 import type { Server as HttpServer } from "node:http";
 import { createAdapter } from "@socket.io/redis-adapter";
 import { Server } from "socket.io";
-import { env } from "../config/env.js";
+import { corsOrigins } from "../config/env.js";
 import { redisPub, redisSub } from "../db/redis.js";
 import {
   assignmentRoom,
@@ -16,7 +16,7 @@ let io: AppSocketServer | undefined;
 export async function initSocketServer(httpServer: HttpServer) {
   io = new Server<ClientToServerEvents, ServerToClientEvents>(httpServer, {
     cors: {
-      origin: env.WEB_URL,
+      origin: corsOrigins,
       credentials: true
     }
   });

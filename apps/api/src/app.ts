@@ -1,7 +1,8 @@
 import cors from "cors";
 import express from "express";
 import helmet from "helmet";
-import { env } from "./config/env.js";
+import { corsOrigins } from "./config/env.js";
+import { isAllowedCorsOrigin } from "./config/cors.js";
 import { assignmentsRouter } from "./routes/assignments.js";
 
 export function createApp() {
@@ -10,7 +11,14 @@ export function createApp() {
   app.use(helmet());
   app.use(
     cors({
-      origin: env.WEB_URL,
+      origin(origin, callback) {
+        if (isAllowedCorsOrigin(origin, corsOrigins)) {
+          callback(null, origin ?? corsOrigins[0]);
+          return;
+        }
+
+        callback(new Error(`Origin ${origin ?? "unknown"} is not allowed by CORS`));
+      },
       credentials: true
     })
   );
