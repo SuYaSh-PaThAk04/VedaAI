@@ -1,0 +1,68 @@
+# Render Blueprint: https://render.com/docs/blueprint-spec
+# Prereqs: MongoDB Atlas + Upstash Redis (or other hosted Redis). Set secrets in Render dashboard.
+databases: []
+
+services:
+  - type: web
+    name: vedaai-api
+    runtime: node
+    plan: starter
+    rootDir: .
+    buildCommand: npm ci && npm run build -w @vedaai/shared && npm run build -w @vedaai/api
+    startCommand: npm run start -w @vedaai/api
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: PORT
+        value: "4000"
+      - key: WEB_URL
+        sync: false
+      - key: MONGODB_URI
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
+      - key: MOCK_AI
+        value: "false"
+
+  - type: worker
+    name: vedaai-worker
+    runtime: node
+    plan: starter
+    rootDir: .
+    buildCommand: npm ci && npm run build -w @vedaai/shared && npm run build -w @vedaai/api
+    startCommand: npm run start:worker -w @vedaai/api
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: WEB_URL
+        sync: false
+      - key: MONGODB_URI
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
+      - key: MOCK_AI
+        value: "false"
+
+  - type: web
+    name: vedaai-web
+    runtime: node
+    plan: starter
+    rootDir: .
+    buildCommand: npm ci && npm run build -w @vedaai/shared && NEXT_PUBLIC_API_URL=$VEDAAI_API_URL npm run build -w @vedaai/web
+    startCommand: npm run start -w @vedaai/web
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: VEDAAI_API_URL
+        sync: false
+      - key: NEXT_PUBLIC_API_URL
+        sync: false

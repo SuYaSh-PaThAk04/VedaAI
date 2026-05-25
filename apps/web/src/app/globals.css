@@ -1,0 +1,250 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f6f7fb;
+  --foreground: #101828;
+  --surface: rgba(255, 255, 255, 0.92);
+  --surface-strong: #ffffff;
+  --surface-muted: #f2f2f2;
+  --border-soft: rgba(16, 24, 40, 0.08);
+  --text-muted: #777777;
+  --accent: #ff6b3d;
+}
+
+[data-theme="dark"] {
+  --background: #0f1115;
+  --foreground: #f5f7fb;
+  --surface: rgba(24, 27, 34, 0.9);
+  --surface-strong: #171a21;
+  --surface-muted: #20242d;
+  --border-soft: rgba(255, 255, 255, 0.08);
+  --text-muted: #9aa3b2;
+  --accent: #ff8a5f;
+  color-scheme: dark;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), Inter, Arial, Helvetica, sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+
+.veda-shell {
+  background:
+    radial-gradient(circle at 15% 10%, rgba(255, 255, 255, 0.65), transparent 28%),
+    linear-gradient(135deg, #d2d2d2 0%, #eeeeee 45%, #cfcfcf 100%);
+  transition: background 250ms ease, color 250ms ease;
+}
+
+[data-theme="dark"] .veda-shell {
+  background:
+    radial-gradient(circle at 18% 8%, rgba(255, 107, 61, 0.18), transparent 30%),
+    radial-gradient(circle at 88% 16%, rgba(82, 113, 255, 0.14), transparent 28%),
+    linear-gradient(135deg, #080a0e 0%, #11141b 48%, #0b0d12 100%);
+  color: var(--foreground);
+}
+
+.veda-sidebar,
+.veda-header,
+.veda-card,
+.veda-dropdown,
+.veda-school-card,
+.veda-form-card,
+.veda-upload-zone,
+.veda-icon-btn,
+.veda-profile-btn {
+  border: 1px solid var(--border-soft);
+  transition:
+    background-color 250ms ease,
+    border-color 250ms ease,
+    color 250ms ease,
+    box-shadow 250ms ease,
+    transform 250ms ease;
+}
+
+.veda-card,
+.veda-dropdown,
+.veda-icon-btn,
+.veda-profile-btn,
+.veda-upload-zone {
+  background: var(--surface-strong) !important;
+}
+
+.veda-sidebar,
+.veda-header,
+.veda-school-card,
+.veda-form-card {
+  background: var(--surface) !important;
+  backdrop-filter: blur(18px);
+}
+
+.veda-content,
+.veda-mobile-title {
+  transition: background-color 250ms ease, color 250ms ease, border-color 250ms ease;
+}
+
+[data-theme="dark"] .veda-content,
+[data-theme="dark"] .veda-mobile-title {
+  background: rgba(13, 15, 20, 0.82) !important;
+  border-color: var(--border-soft) !important;
+}
+
+[data-theme="dark"] .veda-card,
+[data-theme="dark"] .veda-dropdown,
+[data-theme="dark"] .veda-school-card,
+[data-theme="dark"] .veda-form-card,
+[data-theme="dark"] .veda-upload-zone,
+[data-theme="dark"] .veda-icon-btn,
+[data-theme="dark"] .veda-profile-btn,
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+  background: var(--surface-strong) !important;
+  color: var(--foreground) !important;
+  border-color: var(--border-soft) !important;
+}
+
+[data-theme="dark"] .veda-sidebar,
+[data-theme="dark"] .veda-header {
+  background: rgba(23, 26, 33, 0.86) !important;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.42) !important;
+}
+
+[data-theme="dark"] .veda-bottom-nav {
+  background: rgba(15, 17, 22, 0.92) !important;
+  border: 1px solid var(--border-soft);
+  backdrop-filter: blur(16px);
+}
+
+[data-theme="dark"] .veda-sidebar,
+[data-theme="dark"] .veda-header,
+[data-theme="dark"] .veda-card,
+[data-theme="dark"] .veda-dropdown,
+[data-theme="dark"] .veda-form-card,
+[data-theme="dark"] .veda-mobile-title {
+  color: var(--foreground) !important;
+}
+
+[data-theme="dark"] .veda-sidebar p,
+[data-theme="dark"] .veda-sidebar span,
+[data-theme="dark"] .veda-header p,
+[data-theme="dark"] .veda-header span,
+[data-theme="dark"] .veda-card h2,
+[data-theme="dark"] .veda-card p,
+[data-theme="dark"] .veda-card span,
+[data-theme="dark"] .veda-form-card h2,
+[data-theme="dark"] .veda-form-card label {
+  color: var(--foreground) !important;
+}
+
+[data-theme="dark"] .veda-card [class*="text-[#7"],
+[data-theme="dark"] .veda-card [class*="text-[#8"],
+[data-theme="dark"] .veda-card [class*="text-[#9"],
+[data-theme="dark"] .veda-form-card p,
+[data-theme="dark"] .veda-form-card [class*="text-[#8"],
+[data-theme="dark"] .veda-dropdown [class*="text-[#8"] {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+  box-shadow: inset 0 0 0 1px var(--border-soft);
+}
+
+[data-theme="dark"] p,
+[data-theme="dark"] span,
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] label,
+[data-theme="dark"] button,
+[data-theme="dark"] a {
+  border-color: var(--border-soft);
+}
+
+[data-theme="dark"] .question-paper-print {
+  color: #111 !important;
+  background: #fff !important;
+}
+
+[data-theme="dark"] ::placeholder {
+  color: #7f8896;
+}
+
+[data-theme="dark"] button[class*="bg-white"]:not(.veda-icon-btn):not(.veda-profile-btn),
+[data-theme="dark"] a[class*="bg-white"]:not(.veda-card):not(.veda-dropdown),
+[data-theme="dark"] [role="button"][class*="bg-white"] {
+  color: #111827 !important;
+}
+
+[data-theme="dark"] button[class*="bg-white"]:not(.veda-icon-btn):not(.veda-profile-btn) span,
+[data-theme="dark"] a[class*="bg-white"]:not(.veda-card):not(.veda-dropdown) span,
+[data-theme="dark"] [role="button"][class*="bg-white"] span {
+  color: #111827 !important;
+}
+
+[data-theme="dark"] .veda-light-control,
+[data-theme="dark"] .veda-light-control * {
+  background-color: #ffffff !important;
+  color: #111827 !important;
+  border-color: rgba(255, 255, 255, 0.85) !important;
+}
+
+[data-theme="dark"] .veda-light-control::placeholder {
+  color: #6b7280 !important;
+}
+
+[data-theme="dark"] .veda-light-control button {
+  background: transparent !important;
+  color: #6b7280 !important;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+@media print {
+  @page {
+    margin: 12mm;
+    size: A4;
+  }
+
+  body {
+    background: #fff !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-root {
+    overflow: visible !important;
+    background: #fff !important;
+    padding: 0 !important;
+  }
+
+  .question-paper-print {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    color: #000 !important;
+    background: #fff !important;
+  }
+}

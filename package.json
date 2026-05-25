@@ -1,0 +1,25 @@
+{
+  "name": "vedaai-assessment-creator",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev -w @vedaai/api\" \"npm run worker -w @vedaai/api\" \"npm run dev -w @vedaai/web\"",
+    "dev:api": "npm run dev -w @vedaai/api",
+    "dev:web": "npm run dev -w @vedaai/web",
+    "build": "npm run build -w @vedaai/shared && npm run build -w @vedaai/api && npm run build -w @vedaai/web",
+    "build:api": "npm run build -w @vedaai/shared && npm run build -w @vedaai/api",
+    "build:web": "npm run build -w @vedaai/shared && npm run build -w @vedaai/web",
+    "typecheck": "npm run typecheck -ws"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "typescript": "^5.8.3"
+  }
+}

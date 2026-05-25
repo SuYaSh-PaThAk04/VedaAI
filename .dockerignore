@@ -1,0 +1,17 @@
+node_modules
+**/node_modules
+.git
+.gitignore
+.cursor
+**/.next
+**/dist
+apps/api/dist
+packages/shared/dist
+**/*.md
+!README.md
+.env
+.env.*
+!.env.example
+!apps/**/.env.example
+terminals
+agent-transcripts
